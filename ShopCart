@@ -47,17 +47,14 @@ public class ShopCart {
 		double price=0;
 		double minor = 9999;
 		double higher = 0;
-		System.out.println("paso-1" );
 		
-		for (int n=0;n==i;n++ ){
-			System.out.println("paso0" );
+		
+		for (int n=0;n!=i;n++ ){
+			
 		 if(items.get(n).getQuantity()>0){ //entra si la cantidad de prod es >a 0
 			 
-			 System.out.println("paso1" );
-			 
-			 
-			 
 			 price = price + items.get(n).getUniPrice() * items.get(n).getQuantity()  ;
+			 
 			 if (pay == "Paypal"){
 				 if (items.get(n).getUniPrice() < minor){ //guarda el menor
 					 minor = items.get(n).getUniPrice();
