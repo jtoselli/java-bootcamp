@@ -1,0 +1,31 @@
+public class _ShopCartTest {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+
+		Product p1 = new Product("shoes" ,1, 100.0);
+		Product p2 = new Product("lamp",2,1.0);
+		Product p3 = new Product("lamp",1,2.0);
+		Product p4 = new Product("lamp",1,2.0);
+		
+		
+		ShopCart cart1 = new ShopCart(p1);
+		
+		cart1.addProduct(p3);
+		cart1.addProduct(p2);
+		cart1.addProduct(p4);
+		cart1.setPay("Cash");
+		
+		
+		System.out.println(cart1.getFinalPrice() ); // tiene q devolver 16
+		cart1.setPay("Credit Card");
+		System.out.println(cart1.getFinalPrice() );//tiene q devolver 116.6
+		cart1.setPay("Paypal");
+		System.out.println(cart1.getFinalPrice() );//tiene q devolver 105
+	}
+
+}
