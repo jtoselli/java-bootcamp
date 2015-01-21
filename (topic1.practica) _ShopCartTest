@@ -1,3 +1,4 @@
+
 public class _ShopCartTest {
 
 	/**
@@ -11,21 +12,20 @@ public class _ShopCartTest {
 		Product p2 = new Product("lamp",2,1.0);
 		Product p3 = new Product("lamp",1,2.0);
 		Product p4 = new Product("lamp",1,2.0);
-		
+		Pay pay= new Pay();
 		
 		ShopCart cart1 = new ShopCart(p1);
 		
 		cart1.addProduct(p3);
 		cart1.addProduct(p2);
 		cart1.addProduct(p4);
-		cart1.setPay("Cash");
+		cart1.setPay(pay.PayForm());
+		pay.PayQuestion();
+		//opcion 1 tiene q devolver 116.6
+		//opcion 2 tiene q devolver tiene q devolver 105
+		//opcion 3 tiene q devolver tiene q devolver 16
+		System.out.println("Total $"+ cart1.getFinalPrice() ); 
 		
-		
-		System.out.println(cart1.getFinalPrice() ); // tiene q devolver 16
-		cart1.setPay("Credit Card");
-		System.out.println(cart1.getFinalPrice() );//tiene q devolver 116.6
-		cart1.setPay("Paypal");
-		System.out.println(cart1.getFinalPrice() );//tiene q devolver 105
 	}
 
 }
