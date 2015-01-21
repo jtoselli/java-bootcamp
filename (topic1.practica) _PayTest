@@ -1,0 +1,12 @@
+
+public class _PayTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Pay Form= new Pay();
+		Form.PayForm();
+		Form.PayQuestion();
+	}
+
+}
