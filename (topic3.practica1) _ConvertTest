@@ -1,0 +1,70 @@
+package TDDejercicios;
+
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class _ConvertTest {
+
+	@Test
+	public void Convert_1_to_one(){
+		Convert num= new Convert(1);
+		assertEquals("one dollars", num.getWord());
+	}
+	@Test
+	public void Convert_2_to_two(){
+		Convert num= new Convert(2);
+		assertEquals("two dollars", num.getWord());
+	}	
+	@Test
+	public void Convert_5_to_five(){
+		Convert num= new Convert(5);
+		assertEquals("five dollars", num.getWord());
+	}
+	@Test
+	public void Convert_10_to_ten(){
+		
+		Convert num= new Convert(10);
+		assertEquals("ten dollars", num.getWord());
+	}
+	@Test
+	public void Convert_58_to_fifty_eigth(){
+		
+		Convert num= new Convert(58);		
+		assertEquals("fifty eight dollars", num.getWord());
+		
+	}
+	@Test
+	public void Convert_99_to_ninety_nine(){
+		
+		Convert num= new Convert(99);		
+		assertEquals("ninety nine dollars",num.getWord());
+		
+	}
+	@Test
+	public void Convert_100_to_one_hundred(){
+		
+		Convert num= new Convert(100);
+		assertEquals("one hundred dollars",num.getWord());
+	}
+	@Test
+	public void Convert_905_to_text(){
+		
+		Convert num= new Convert(905);
+		assertEquals("nine hundred five dollars",num.getWord());
+	}
+	@Test
+	public void Convert_70005_to_text(){
+		
+		Convert num= new Convert(70005);
+		assertEquals("seventy thousand five dollars",num.getWord());
+	}	
+	@Test
+	public void Convert_99005_5_to_text(){
+		
+		Convert num= new Convert(99005.5);
+		System.out.println(num.getWord());
+		assertEquals("ninety nine thousand five and 50/100 dollars",num.getWord());
+	}
+}
