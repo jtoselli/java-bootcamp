@@ -1,0 +1,25 @@
+package TDDejercicios;
+
+import java.util.Scanner;
+
+public class _ConvertInTest {
+
+	public static void main(String[] args) {
+		double ingreso=0;
+		@SuppressWarnings("resource")
+		Scanner in = new Scanner ( System.in );
+		do{
+			
+			System.out.println("ingrese 0 si quiere salir");
+			System.out.println("ingrese numero");
+			ingreso = in.nextDouble(); 
+			//si escribo "." para los decimales me da error, tengo que usar la ","
+			if(ingreso!=0){
+				Convert num= new Convert(ingreso);		
+				System.out.println(num.getWord()); 
+			}
+		}while (ingreso !=0);
+		System.out.println("thank you."); 
+	}
+
+}
