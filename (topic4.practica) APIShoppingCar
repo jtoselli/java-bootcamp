@@ -1,0 +1,17 @@
+import java.util.List;
+
+public interface ShoppingCart {
+	
+	void addItem(Product item);
+	void removeItem(Product item);
+	void removeItem(int position);
+	void setPayment(PayType pay);	
+
+	List<Product> getItems();
+	
+	double getFinalPrice();
+
+	enum PayType {
+		PAYPAL, Credit_Card, Cash;
+	}
+}
