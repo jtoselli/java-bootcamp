@@ -1,9 +1,9 @@
-
 public class Product {
 
 	private String name ;
 	private int quantity ;
 	private double uniPrice ;
+	private String category;
 	
 	//Contructors
 	public Product(){
@@ -11,13 +11,15 @@ public class Product {
 		quantity = 0;
 		uniPrice = 0;
 	}
-	public Product(String name, int quantity, double uniPrice){
-		this.name = name;
+	public Product(String name, int quantity, double uniPrice, String category){
 		if (quantity >0){
-			 this.quantity = quantity;
-			}else { System.out.println("the quantity must be more than 0");
-				}
-		this.uniPrice= uniPrice;
+			this.name = name;
+			this.quantity = quantity;
+			this.uniPrice= uniPrice;
+			this.category= category;
+		}else { System.out.println("the quantity must be more than 0");
+		}
+		
 	}
 	//set y get
 	public String getName(){
@@ -28,6 +30,9 @@ public class Product {
 	}
 	public double getUniPrice(){
 		return uniPrice;
+	}
+	public String getCategory(){
+		return category;
 	}
 	public void setQuantity(int quantity){ //chequear cantidad negativa
 		if (quantity >0){
