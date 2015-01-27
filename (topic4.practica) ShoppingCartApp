@@ -13,12 +13,12 @@ public class ShoppingCartApp implements ShoppingCart {
 	//contructores
 	public ShoppingCartApp(Product item, PayType pay){
 
-		this.items.add(new Product(item.getName(),item.getQuantity(),item.getUniPrice()));
+		this.items.add(new Product(item.getName(),item.getQuantity(),item.getUniPrice(),item.getCategory()));
 		this.pay = pay;
 		i++;
 	}
 	public ShoppingCartApp(Product item){
-		this.items.add(new Product(item.getName(),item.getQuantity(),item.getUniPrice()));
+		this.items.add(new Product(item.getName(),item.getQuantity(),item.getUniPrice(),item.getCategory()));
 		i++;
 	}
 	public ShoppingCartApp(){
@@ -27,10 +27,8 @@ public class ShoppingCartApp implements ShoppingCart {
 	
 	@Override
 	public void addItem(Product item) {
-		this.items.add(new Product(item.getName(),item.getQuantity(),item.getUniPrice()));
+		this.items.add(new Product(item.getName(),item.getQuantity(),item.getUniPrice(), item.getCategory()));
 		i++;
-
-
 	}
 
 	@Override
@@ -102,9 +100,9 @@ public class ShoppingCartApp implements ShoppingCart {
 		
 	}
 	
-	
 	public Product getItem(int position){
 		return this.items.get(position);
 	}
+	
 	
 }
