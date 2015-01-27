@@ -59,44 +59,47 @@ public class ShoppingCartApp implements ShoppingCart {
 		double price=0;
 		double minor = 9999;
 		double higher = 0;
+		if (i==1&&items.get(0).getQuantity()==1){
+			this.finalPrice= items.get(0).getUniPrice();
+		}else{
 		
+			for (int n=0;n!=i;n++ ){
 		
-		for (int n=0;n!=i;n++ ){
-		
-		Product product = items.get(n);
+				Product product = items.get(n);
 			
-		if(product.getQuantity()>0){ //entra si la cantidad de prod es >a 0
+				if(product.getQuantity()>0){ //entra si la cantidad de prod es >a 0
 			 
 			 	 
-			 price = price + product.getUniPrice() * product.getQuantity()  ;
+					price = price + product.getUniPrice() * product.getQuantity()  ;
 			 
-			 if (pay == ShoppingCart.PayType.PAYPAL){
-				 if (product.getUniPrice() < minor){ //guarda el menor
-					 minor = product.getUniPrice();
-				 }
+					if (pay == ShoppingCart.PayType.PAYPAL){
+						if (product.getUniPrice() < minor){ //guarda el menor
+							minor = product.getUniPrice();
+						}
 				 
-			 }else {
+					}else {
 				 
-			 }
-			 if (pay == ShoppingCart.PayType.Cash){
-				 minor=0;
-				 if (product.getUniPrice() > higher){ //guarda el mayor
-					 higher = product.getUniPrice();
-				 }
+					}
+					if (pay == ShoppingCart.PayType.Cash){
+						minor=0;
+						if (product.getUniPrice() > higher){ //guarda el mayor
+							higher = product.getUniPrice();
+						}
 				 
-			 }
-		 }
-		}
-		higher = higher*0.9;
+					}
+				}
+			}
+			higher = higher*0.9;
 		
-		if (pay == ShoppingCart.PayType.Credit_Card){
-			minor=0;
-			finalPrice = price *1.1;
-		} else {
-			finalPrice = (price - minor - higher);
-		}
-		 return finalPrice;
+			if (pay == ShoppingCart.PayType.Credit_Card){
+				minor=0;
+				finalPrice = price *1.1;
+			} else {
+				finalPrice = (price - minor - higher);
+			}
 			
+		}
+		return finalPrice;
 		
 	}
 	
