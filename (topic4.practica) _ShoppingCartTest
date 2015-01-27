@@ -76,4 +76,18 @@ public class _ShoppingCartTest {
 		
 		
 	}
+	@Test
+	public void getFinalPriceTestUnit(){
+		cart0.addItem(prod03);
+		cart0.setPayment(ShoppingCart.PayType.Cash);
+		
+		cart0.setPayment(ShoppingCart.PayType.Cash);
+		assertEquals(102.5,cart0.getFinalPrice(),102.5);
+		
+		cart0.setPayment(ShoppingCart.PayType.Credit_Card);
+		assertEquals(102.5,cart0.getFinalPrice(),102.5);
+		
+		cart0.setPayment(ShoppingCart.PayType.PAYPAL);
+		assertEquals(102.5,cart0.getFinalPrice(),102.5);
+	}
 }
