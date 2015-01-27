@@ -1,0 +1,47 @@
+
+
+public class Product {
+
+	private String name ;
+	private int quantity ;
+	private double uniPrice ;
+	
+	//Contructors
+	public Product(){
+		name = "NN";
+		quantity = 0;
+		uniPrice = 0;
+	}
+	public Product(String name, int quantity, double uniPrice){
+		this.name = name;
+		if (quantity >0){
+			 this.quantity = quantity;
+			}else { System.out.println("the quantity must be more than 0");
+				}
+		this.uniPrice= uniPrice;
+	}
+	//set y get
+	public String getName(){
+		return name;
+	}
+	public int getQuantity(){
+		return quantity;
+	}
+	public double getUniPrice(){
+		return uniPrice;
+	}
+	public void setQuantity(int quantity){ //chequear cantidad negativa
+		if (quantity >0){
+		 this.quantity = quantity;
+		}else { System.out.println("the quantity must be more than 0");
+			}
+	}
+	//toString
+	public String toString(){
+		return "The price of "+ name+ " is " + uniPrice;
+	}
+	public boolean equals(Product obj){
+		return (this.name == obj.name && this.uniPrice == obj.uniPrice) ;
+		
+	}
+}

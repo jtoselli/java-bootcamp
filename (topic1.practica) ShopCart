@@ -1,0 +1,84 @@
+import java.util.ArrayList;
+ 
+
+public class ShopCart {
+
+	
+	ArrayList<Product> items = new ArrayList<>();
+	private String pay = "";
+	private  Double finalPrice = 0.0;
+	public int i=0; //uso i para saber la cantidad de elementos en el carrito
+	
+	//contructor
+	public ShopCart (Product item, String pay){
+		
+		this.items.add(new Product(item.getName(),item.getQuantity(),item.getUniPrice()));
+		this.pay = pay;
+		i++;
+		
+	}
+	
+	
+	public ShopCart(Product item) {
+		this.items.add(new Product(item.getName(),item.getQuantity(),item.getUniPrice()));
+		i++;
+
+	}
+	//agregar producto
+	public void addProduct(Product item) {
+		this.items.add(new Product(item.getName(),item.getQuantity(),item.getUniPrice()));
+		i++;
+
+	}
+	// set de forma de pago
+	
+	
+	public void setPay(String pay) {
+		this.pay = pay;
+	}
+
+//precio final
+	
+	public double getFinalPrice(){
+		
+		double price=0;
+		double minor = 9999;
+		double higher = 0;
+		
+		
+		for (int n=0;n!=i;n++ ){
+			
+		 if(items.get(n).getQuantity()>0){ //entra si la cantidad de prod es >a 0
+			 
+			 price = price + items.get(n).getUniPrice() * items.get(n).getQuantity()  ;
+			 
+			 if (pay == "Paypal"){
+				 if (items.get(n).getUniPrice() < minor){ //guarda el menor
+					 minor = items.get(n).getUniPrice();
+				 }
+				 
+			 }else {
+				 
+			 }
+			 if (pay == "Cash"){
+				 minor=0;
+				 if (items.get(n).getUniPrice() > higher){ //guarda el mayor
+					 higher = items.get(n).getUniPrice();
+				 }
+				 
+			 }
+		 }
+		}
+		higher = higher*0.9;
+		
+		if (pay == "Credit Card"){
+			minor=0;
+			finalPrice = price *1.1;
+		} else {
+			finalPrice = (price - minor - higher);
+		}
+		 return finalPrice;
+			
+		
+	}
+}

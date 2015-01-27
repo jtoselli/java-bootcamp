@@ -1,0 +1,111 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class ShoppingCartApp implements ShoppingCart {
+	
+
+	List<Product> items = new ArrayList<>();
+	private PayType pay;
+	private  Double finalPrice = 0.0;
+	public int i=0; //uso i para saber la cantidad de elementos en el carrito
+	
+	//contructores
+	public ShoppingCartApp(Product item, PayType pay){
+
+		this.items.add(new Product(item.getName(),item.getQuantity(),item.getUniPrice(),item.getCategory()));
+		this.pay = pay;
+		i++;
+	}
+	public ShoppingCartApp(Product item){
+		this.items.add(new Product(item.getName(),item.getQuantity(),item.getUniPrice(),item.getCategory()));
+		i++;
+	}
+	public ShoppingCartApp(){
+		
+	}
+	
+	@Override
+	public void addItem(Product item) {
+		this.items.add(new Product(item.getName(),item.getQuantity(),item.getUniPrice(), item.getCategory()));
+		i++;
+	}
+
+	@Override
+	public void removeItem(Product item) {
+		this.items.remove(item);
+		i--;
+	}
+
+	@Override
+	public void removeItem(int position) {
+		this.items.remove(position);
+		i--;
+	}
+	@Override
+	public void setPayment(PayType pay) {
+		this.pay = pay;
+	}
+
+	@Override
+	public List<Product> getItems() {
+		
+		return items;
+	}
+	
+	@Override
+	public double getFinalPrice() {
+
+		double price=0;
+		double minor = 9999;
+		double higher = 0;
+		if (i==1&&items.get(0).getQuantity()==1){
+			this.finalPrice= items.get(0).getUniPrice();
+		}else{
+		
+			for (int n=0;n!=i;n++ ){
+		
+				Product product = items.get(n);
+			
+				if(product.getQuantity()>0){ //entra si la cantidad de prod es >a 0
+			 
+			 	 
+					price = price + product.getUniPrice() * product.getQuantity()  ;
+			 
+					if (pay == ShoppingCart.PayType.PAYPAL){
+						if (product.getUniPrice() < minor){ //guarda el menor
+							minor = product.getUniPrice();
+						}
+				 
+					}else {
+				 
+					}
+					if (pay == ShoppingCart.PayType.Cash){
+						minor=0;
+						if (product.getUniPrice() > higher){ //guarda el mayor
+							higher = product.getUniPrice();
+						}
+				 
+					}
+				}
+			}
+			higher = higher*0.9;
+		
+			if (pay == ShoppingCart.PayType.Credit_Card){
+				minor=0;
+				finalPrice = price *1.1;
+			} else {
+				finalPrice = (price - minor - higher);
+			}
+			
+		}
+		return finalPrice;
+		
+	}
+	
+	public Product getItem(int position){
+		return this.items.get(position);
+	}
+	
+	
+}

@@ -1,0 +1,21 @@
+
+public class _ProductTest {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Product p1 = new Product("shoes" ,1, 20);
+		Product p2 = new Product("lamp",-4,5.50);//mensaje de error
+		Product p3 = new Product("lamp",4,4.50);
+		Product p4 = new Product("lamp",4,5.50);
+		System.out.println(p1);
+		System.out.println(p2);
+		System.out.println(p2.getQuantity()); // devuelve 0 porq puse cantidad d¿negativa
+		System.out.println(p2.equals(p3)); //same name but diferent uniPrice
+		System.out.println(p2.equals(p4)); //same name and same uniPrice
+		
+	}
+}

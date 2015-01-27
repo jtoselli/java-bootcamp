@@ -1,0 +1,297 @@
+package TDDejercicios;
+
+public class Convert {
+	private String wordP ="";
+	private String word ="";
+	private String wordU="";
+	private String wordC="";
+	private String wordMU="";
+	private String wordMD="";
+	
+	
+
+	public Convert(double i) {
+		double num=i%1;
+		if(num<1&&num!=0)ConvertPenny(num);
+		int decena=0;
+		int unit=0;
+		
+		if(i>=1000){ // mil
+			int mil = (int) (i/1000);
+			ConvertMil(mil);
+			i=i-mil*1000;
+		}
+		if(i>=100){ //cien
+			int cien=(int) (i/100);
+			ConvertCent(cien);
+			i=i-cien*100;					
+		}
+		//convierte <100
+		if(i<20){
+			unit=(int) i;
+		}else{
+			decena= (int) (i/10);
+			unit = (int) (i-(decena*10));
+		}
+
+		switch(decena){
+		
+		case 2:
+			this.word="twenty ";
+			break;	
+		case 3:		
+			this.word = "thirty ";
+			break;	
+		case 4:
+			this.word="forty ";
+			break;	
+		case 5:		
+			this.word = "fifty ";
+			break;	
+		case 6:
+			this.word="sixty ";
+			break;	
+		case 7:		
+			this.word = "seventy ";
+			break;	
+		case 8:
+			this.word="eighty ";
+			break;	
+		case 9:		
+			this.word = "ninety ";
+			break;
+		default:
+			break;
+		}
+		
+		
+		switch(unit){
+		
+		case 1:		
+			this.wordU = "one ";
+			break;	
+		case 2:
+			this.wordU="two ";
+			break;	
+		case 3:		
+			this.wordU = "three ";
+			break;	
+		case 4:
+			this.wordU="four ";
+			break;	
+		case 5:		
+			this.wordU = "five ";
+			break;	
+		case 6:
+			this.wordU ="six ";
+			break;	
+		case 7:		
+			this.wordU = "seven ";
+			break;	
+		case 8:
+			this.wordU = "eight ";
+			break;	
+		case 9:		
+			this.wordU = "nine ";
+			break;	
+		case 10:
+			this.wordU="ten ";
+			break;	
+		case 11:
+			this.wordU="eleven ";
+			break;
+		case 12:
+			this.wordU="twelve ";
+			break;
+		case 13:
+			this.wordU="thirteen ";
+			break;
+		case 14:
+			this.wordU="fourteen ";
+			break;
+		case 15:
+			this.wordU="fifteen ";
+			break;
+		case 16:
+			this.wordU="sixteen ";
+			break;
+		case 17:
+			this.wordU="seventeen ";
+			break;
+		case 18:
+			this.wordU="eighteen ";
+			break;
+		case 19:
+			this.wordU="nineteen ";
+			break;
+		default:
+			break;
+			}
+		
+		
+	}
+
+
+	private void ConvertPenny(double num) {
+		// TODO Auto-generated method stub
+		num= num*100;
+		int numA=(int) num;
+		this.wordP="and "+numA+"/100 ";
+	}
+
+
+	private void ConvertCent(int cien) {
+		int centena= cien;
+		switch(centena){
+		
+		case 1:		
+			this.wordC = "one hundred ";
+			break;	
+		case 2:
+			this.wordC="two hundred ";
+			break;	
+		case 3:		
+			this.wordC = "three hundred ";
+			break;	
+		case 4:
+			this.wordC="four hundred ";
+			break;	
+		case 5:		
+			this.wordC = "five hundred ";
+			break;	
+		case 6:
+			this.wordC ="six hundred ";
+			break;	
+		case 7:		
+			this.wordC = "seven hundred ";
+			break;	
+		case 8:
+			this.wordC = "eight hundred ";
+			break;
+		case 9:
+			this.wordC = "nine hundred ";
+			break;
+		}
+		
+	}
+
+
+	private void ConvertMil(int mil) {
+		int milUnit=0;
+		int milDec=0;
+		if(mil<20){
+			milUnit=mil;
+			milDec=0;
+		}else{
+			milDec= mil/10;
+			milUnit = mil-10*milDec;
+			
+		}
+
+		switch(milDec){
+		
+		case 2:
+			this.wordMD="twenty ";
+			break;	
+		case 3:		
+			this.wordMD = "thirty ";
+			break;	
+		case 4:
+			this.wordMD="forty ";
+			break;	
+		case 5:		
+			this.wordMD = "fifty ";
+			break;	
+		case 6:
+			this.wordMD="sixty ";
+			break;	
+		case 7:		
+			this.wordMD = "seventy ";
+			break;	
+		case 8:
+			this.wordMD="eighty ";
+			break;	
+		case 9:		
+			this.wordMD = "ninety ";
+			break;
+		default:
+			break;
+		}
+		
+		
+		switch(milUnit){
+		
+		case 1:		
+			this.wordMU = "one thousand ";
+			break;	
+		case 2:
+			this.wordMU="two thousand ";
+			break;	
+		case 3:		
+			this.wordMU = "three thousand ";
+			break;	
+		case 4:
+			this.wordMU="four thousand ";
+			break;	
+		case 5:		
+			this.wordMU = "five thousand ";
+			break;	
+		case 6:
+			this.wordMU ="six thousand ";
+			break;	
+		case 7:		
+			this.wordMU = "seven thousand ";
+			break;	
+		case 8:
+			this.wordMU = "eight thousand ";
+			break;	
+		case 9:		
+			this.wordMU = "nine thousand ";
+			break;	
+		case 10:
+			this.wordMU="ten thousand ";
+			break;	
+		case 11:
+			this.wordMU="eleven thousand ";
+			break;
+		case 12:
+			this.wordMU="twelve thousand ";
+			break;
+		case 13:
+			this.wordMU="thirteen thousand ";
+			break;
+		case 14:
+			this.wordMU="fourteen thousand ";
+			break;
+		case 15:
+			this.wordMU="fifteen thousand ";
+			break;
+		case 16:
+			this.wordMU="sixteen thousand ";
+			break;
+		case 17:
+			this.wordMU="seventeen thousand ";
+			break;
+		case 18:
+			this.wordMU="eighteen thousand ";
+			break;
+		case 19:
+			this.wordMU="nineteen thousand ";
+			break;
+		default:
+			this.wordMU="thousand ";
+			break;
+			}
+		
+		
+		
+		
+	}
+
+
+	public String getWord() {
+	
+		return wordMD+wordMU+wordC+word+wordU+wordP+"dollars";
+	}
+	
+}

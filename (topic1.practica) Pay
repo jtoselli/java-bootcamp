@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+
+public class Pay {
+
+	private String PayForm="";
+	Scanner in = new Scanner ( System.in );
+	private int option;
+	private int i=0;
+	String Fname="NN";
+	String Lname="NN";
+	int CredNum=0;
+	String pass="";
+	String mail="";
+	
+	public String PayForm(){
+		do{
+			System.out.println("ingrese opcion de pago:");
+			System.out.println("1.- Tarjeta de credito");
+			System.out.println("2.- Paypal");
+			System.out.println("3.- Efectivo");
+			option=in.nextInt();
+			i=3;
+			if (option!=1 && option!=2 &&option!=3) {
+				i=1;
+				System.out.println("ingrese opcion valida");
+			}
+		}while(i==1);
+		if (option==1)PayForm="Credit Card";
+		if (option==2)PayForm="Paypal";
+		if (option==3)PayForm="Cash";
+		return PayForm;
+	}
+	
+	public void PayQuestion(){
+		if (option==1){
+			System.out.println("enter your first name:");
+			Fname=in.next();
+			System.out.println("enter your last name:");
+			Lname=in.next();
+			System.out.println("enter your credit number:");
+			CredNum=in.nextInt();
+		}
+		if (option==2){
+			System.out.println("enter your E-Mail:");
+			mail=in.next();
+			System.out.println("enter your password:");
+			pass=in.next();
+		}
+		
+	}
+}
