@@ -1,0 +1,79 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+
+public class _ShoppingCartTest {
+	
+	
+	
+	Product prod0 = new Product("Chair", 6, 35.5);
+	Product prod01 = new Product("Lamp", 13, 12.3);
+	Product prod02 = new Product("Hat", 2, 32.9);
+	Product prod03 = new Product("Hing", 1, 102.5);
+	Product prod04 = new Product("iMovil", 13, 1032.5);
+	Product prod05 = new Product("Phone", 4, 45);
+	Product prod06 = new Product("Fan", 2, 10);
+	Product prod07 = new Product("Purse", 10, 79.9);
+	Product prod08 = new Product("TV", 1, 599.9);
+	Product prod09 = new Product("Door", 5, 25);
+
+	ShoppingCartApp cart0 = new ShoppingCartApp();
+		 
+	@Test
+	public void addTest() {
+		cart0.addItem(prod0);
+		assertEquals(1,cart0.i);
+		cart0.addItem(prod01);
+		assertEquals(2,cart0.i);
+		
+	}
+	@Test
+	public void removeTestPosition() {
+		cart0.addItem(prod0);
+		assertEquals(1,cart0.i);
+		cart0.addItem(prod01);
+		cart0.addItem(prod02);
+		cart0.removeItem(1);
+		assertEquals(2,cart0.i);
+	}
+	@Test
+	public void removeTestItem() {
+
+		cart0.addItem(prod0);
+		assertEquals(1,cart0.i);
+		cart0.addItem(prod01);
+		cart0.addItem(prod02);
+		cart0.removeItem(cart0.getItem(1));
+		assertEquals(2,cart0.i);
+		
+	}
+	@Test
+	public void getITemsTest() {
+		cart0.addItem(prod0);
+		cart0.addItem(prod01);
+		cart0.addItem(prod02);
+		cart0.getItems();
+		String lista ="["+cart0.getItem(0)+", "+cart0.getItem(1)+", "+cart0.getItem(2)+"]";
+		System.out.println(cart0.getItems());
+		System.out.println(lista);
+		assertEquals(lista,cart0.getItems());
+	}
+	
+	@Test
+	public void getFinalPriceTest(){
+		cart0.addItem(prod0);
+		cart0.addItem(prod01);
+		cart0.addItem(prod02);
+		cart0.setPayment(ShoppingCart.PayType.Cash);
+		assertEquals(406.75,cart0.getFinalPrice(),406.75);
+		
+		cart0.setPayment(ShoppingCart.PayType.Credit_Card);
+		assertEquals(482.57000000000005,cart0.getFinalPrice(),482.57000000000005);
+		
+		cart0.setPayment(ShoppingCart.PayType.PAYPAL);
+		assertEquals(426.4,cart0.getFinalPrice(),426.4);
+		
+		
+	}
+}
